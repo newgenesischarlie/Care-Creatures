@@ -9,7 +9,7 @@ public class MinigamePetController : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<PetController>().enabled = false;
+       // GetComponent<PetController>().enabled = false;
         GetComponent<NeedsController>().enabled = false;
         r2d = GetComponent<Rigidbody2D>();
         r2d.simulated = true;
@@ -20,7 +20,7 @@ public class MinigamePetController : MonoBehaviour
         r2d.velocity = Vector3.zero;
         transform.position = Vector3.zero;
         r2d.simulated = false;
-        GetComponent<PetController>().enabled = true;
+       // GetComponent<PetController>().enabled = true;
         GetComponent<NeedsController>().enabled = true;
     }
 

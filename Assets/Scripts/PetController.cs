@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PetManager : MonoBehaviour
 {
-    public PetController pet;
+   // public PetController pet;
     public NeedsController needsController;
     public float petMoveTimer, originalpetMoveTimer;
     public Transform[] waypoints;
@@ -37,7 +37,7 @@ public class PetManager : MonoBehaviour
     private void MovePetToRandomWaypoint()
     {
         int randomWaypoint = Random.Range(0, waypoints.Length);
-        pet.Move(waypoints[randomWaypoint].position);
+        //pet.Move(waypoints[randomWaypoint].position);
     }
 
     public void Die()

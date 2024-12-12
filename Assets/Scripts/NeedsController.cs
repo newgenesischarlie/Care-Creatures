@@ -28,7 +28,7 @@ public class NeedsController : MonoBehaviour
         this.foodTickRate = foodTickRate;
         this.happinessTickRate = happinessTickRate;
         this.energyTickRate = energyTickRate;
-        PetUIController.instance.UpdateImages(food, happiness, energy);
+        //PetUIController.instance.UpdateImages(food, happiness, energy);
     }
 
     public void Initialize(int food, int happiness, int energy,
@@ -39,35 +39,35 @@ public class NeedsController : MonoBehaviour
         this.lastTimeHappy = lastTimeHappy;
         this.lastTimeGainedEnergy = lastTimeGainedEnergy;
 
-        this.food = food
-            - foodTickRate
-            * TickAmountSinceLastTimeToCurrentTime(lastTimeFed, TimingManager.instance.hourLength);
+       // this.food = food
+         //   - foodTickRate
+          //  * TickAmountSinceLastTimeToCurrentTime(lastTimeFed, TimingManager.instance.hourLength);
 
-        this.happiness = happiness
-             - happinessTickRate
-                * TickAmountSinceLastTimeToCurrentTime(lastTimeHappy, TimingManager.instance.hourLength);
+       // this.happiness = happiness
+            // - happinessTickRate
+                //* TickAmountSinceLastTimeToCurrentTime(lastTimeHappy, TimingManager.instance.hourLength);
 
-        this.energy = energy
-            - energyTickRate
-            * TickAmountSinceLastTimeToCurrentTime(lastTimeGainedEnergy, TimingManager.instance.hourLength);
+        //this.energy = energy
+            //- energyTickRate
+            //* TickAmountSinceLastTimeToCurrentTime(lastTimeGainedEnergy, TimingManager.instance.hourLength);
 
-        this.foodTickRate = foodTickRate;
+       // this.foodTickRate = foodTickRate;
         this.happinessTickRate = happinessTickRate;
         this.energyTickRate = energyTickRate;
         if (this.food < 0) this.food = 0;
         if (this.happiness < 0) this.happiness = 0;
         if (this.energy < 0) this.energy = 0;
-        PetUIController.instance.UpdateImages(this.food, this.happiness, this.energy);
+        //PetUIController.instance.UpdateImages(this.food, this.happiness, this.energy);
     }
 
     private void Update()
     {
-        if (TimingManager.instance.gameHourTimer < 0)
+        //if (TimingManager.instance.gameHourTimer < 0)
         {
             ChangeFood(-foodTickRate);
             ChangeHappiness(-happinessTickRate);
             ChangeEnergy(-energyTickRate);
-            PetUIController.instance.UpdateImages(food, happiness, energy);
+            //PetUIController.instance.UpdateImages(food, happiness, energy);
         }
     }
 
@@ -81,7 +81,7 @@ public class NeedsController : MonoBehaviour
         }
         if (food < 0)
         {
-            PetManager.instance.Die();
+            //PetManager.instance.Die();
         }
         else if (food > 100) food = 100;
     }
@@ -95,7 +95,7 @@ public class NeedsController : MonoBehaviour
         }
         if (happiness < 0)
         {
-            PetManager.instance.Die();
+            //PetManager.instance.Die();
         }
         else if (happiness > 100) happiness = 100;
     }
@@ -109,7 +109,7 @@ public class NeedsController : MonoBehaviour
         }
         if (energy < 0)
         {
-            PetManager.instance.Die();
+            //PetManager.instance.Die();
         }
         else if (energy > 100) energy = 100;
     }
