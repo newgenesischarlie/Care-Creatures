@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PetUIController : MonoBehaviour
 {
+    internal static object instance;
+
     // Start is called before the first frame update
     void Start()
     {

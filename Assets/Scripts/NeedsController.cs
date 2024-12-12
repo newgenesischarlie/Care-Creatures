@@ -9,6 +9,8 @@ public class NeedsController : MonoBehaviour
            lastTimeHappy,
            lastTimeGainedEnergy;
 
+    public object PetManager { get; private set; }
+
     private void Awake()
     {
         Initialize(100, 100, 100, 5, 2, 1);
