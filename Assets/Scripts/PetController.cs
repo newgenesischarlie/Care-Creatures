@@ -2,52 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PetController : MonoBehaviour
+public class PetManager : MonoBehaviour
 {
-    public Animator petAnimator;
-    private Vector3 destination;
-    public float speed;
+    public PetController pet;
+    public NeedsController needsController;
+    public float petMoveTimer, originalpetMoveTimer;
+    public Transform[] waypoints;
+
+    public static PetManager instance;
 
     private void Awake()
     {
-
+        originalpetMoveTimer = petMoveTimer;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Debug.LogWarning("More than one PetManager in the Scene");
     }
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position,destination) > 0.5f)
+        if (petMoveTimer > 0)
         {
-            transform.position = Vector3.MoveTowards(transform.position,destination, speed*Time.deltaTime);
+            petMoveTimer -= Time.deltaTime;
+        }
+        else
+        {
+            MovePetToRandomWaypoint();
+            petMoveTimer = originalpetMoveTimer;
         }
     }
 
-    public void Move(Vector3 destination)
+    private void MovePetToRandomWaypoint()
     {
-        this.destination = destination;
+        int randomWaypoint = Random.Range(0, waypoints.Length);
+        pet.Move(waypoints[randomWaypoint].position);
     }
 
-    public void Happy()
+    public void Die()
     {
-        petAnimator.SetTrigger("Happy");
-    }
 
-    public void Hungry()
-    {
-        petAnimator.SetTrigger("Hungry");
-    }
-
-    public void Sad()
-    {
-        petAnimator.SetTrigger("Sad");
-    }
-
-    public void Tired()
-    {
-        petAnimator.SetTrigger("Tired");
-    }
-
-    public void Eat()
-    {
-        petAnimator.SetTrigger("Eat");
     }
 }
