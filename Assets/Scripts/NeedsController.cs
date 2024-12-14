@@ -3,45 +3,36 @@ using UnityEngine;
 
 public class NeedsController : MonoBehaviour
 {
-    public int food, happiness, energy;
-    public int foodTickRate, happinessTickRate, energyTickRate;
-    public DateTime lastTimeFed,
-           lastTimeHappy,
+    public int happiness, energy;
+    public int happinessTickRate, energyTickRate;
+    public DateTime lastTimeHappy,
            lastTimeGainedEnergy;
 
     public object PetManager { get; private set; }
 
     private void Awake()
     {
-        Initialize(100, 100, 100, 5, 2, 1);
+         Initialize( 100, 100, 2, 1);
     }
 
-    public void Initialize(int food, int happiness, int energy,
-        int foodTickRate, int happinessTickRate, int energyTickRate)
+    public void Initialize(int happiness, int energy,
+    int happinessTickRate, int energyTickRate)
     {
-        lastTimeFed = DateTime.Now;
         lastTimeHappy = DateTime.Now;
         lastTimeGainedEnergy = DateTime.Now;
-        this.food = food;
         this.happiness = happiness;
         this.energy = energy;
-        this.foodTickRate = foodTickRate;
         this.happinessTickRate = happinessTickRate;
         this.energyTickRate = energyTickRate;
-        //PetUIController.instance.UpdateImages(food, happiness, energy);
+        //PetUIController.instance.UpdateImages( happiness, energy);
     }
 
-    public void Initialize(int food, int happiness, int energy,
-       int foodTickRate, int happinessTickRate, int energyTickRate,
-       DateTime lastTimeFed, DateTime lastTimeHappy, DateTime lastTimeGainedEnergy)
+    public void Initialize( int happiness, int energy,
+       int happinessTickRate, int energyTickRate,
+    DateTime lastTimeHappy, DateTime lastTimeGainedEnergy)
     {
-        this.lastTimeFed = lastTimeFed;
-        this.lastTimeHappy = lastTimeHappy;
+       this.lastTimeHappy = lastTimeHappy;
         this.lastTimeGainedEnergy = lastTimeGainedEnergy;
-
-       // this.food = food
-         //   - foodTickRate
-          //  * TickAmountSinceLastTimeToCurrentTime(lastTimeFed, TimingManager.instance.hourLength);
 
        // this.happiness = happiness
             // - happinessTickRate
@@ -51,10 +42,8 @@ public class NeedsController : MonoBehaviour
             //- energyTickRate
             //* TickAmountSinceLastTimeToCurrentTime(lastTimeGainedEnergy, TimingManager.instance.hourLength);
 
-       // this.foodTickRate = foodTickRate;
         this.happinessTickRate = happinessTickRate;
         this.energyTickRate = energyTickRate;
-        if (this.food < 0) this.food = 0;
         if (this.happiness < 0) this.happiness = 0;
         if (this.energy < 0) this.energy = 0;
         //PetUIController.instance.UpdateImages(this.food, this.happiness, this.energy);
@@ -64,26 +53,10 @@ public class NeedsController : MonoBehaviour
     {
         //if (TimingManager.instance.gameHourTimer < 0)
         {
-            ChangeFood(-foodTickRate);
             ChangeHappiness(-happinessTickRate);
             ChangeEnergy(-energyTickRate);
             //PetUIController.instance.UpdateImages(food, happiness, energy);
         }
-    }
-
-    public void ChangeFood(int amount)
-    {
-        food += amount;
-        if (amount > 0)
-        {
-            lastTimeFed = DateTime.Now;
-
-        }
-        if (food < 0)
-        {
-            //PetManager.instance.Die();
-        }
-        else if (food > 100) food = 100;
     }
 
     public void ChangeHappiness(int amount)
