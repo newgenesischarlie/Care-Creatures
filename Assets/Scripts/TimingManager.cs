@@ -1,20 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TimingManager : MonoBehaviour
 {
-    internal static object instance;
+    public float gameHourTimer;
+    public float hourLength;
 
-    // Start is called before the first frame update
-    void Start()
+    public static TimingManager instance;
+
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Debug.LogWarning("More than one TimingManager in the Scene");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (gameHourTimer <= 0)
+        {
+            gameHourTimer = hourLength;
+        }
+        else
+        {
+            gameHourTimer -= Time.deltaTime;
+        }
     }
 }

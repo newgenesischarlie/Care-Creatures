@@ -1,20 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PetUIController : MonoBehaviour
 {
-    internal static object instance;
+    public Image happinessImage, energyImage;
 
-    // Start is called before the first frame update
-    void Start()
+    public static PetUIController instance;
+
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Debug.LogWarning("More than one PetUIController in the Scene");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateImages(int happiness, int energy)
     {
-        
+        happinessImage.fillAmount = (float) happiness / 100;
+        energyImage.fillAmount = (float) energy / 100;
     }
 }
