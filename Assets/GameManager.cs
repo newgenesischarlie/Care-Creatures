@@ -14,6 +14,5 @@ public class GameManager : MonoBehaviour
 
         Player.GetComponent<SpriteRenderer>().sprite = PlayerSprite;
 
-
     }
 }
