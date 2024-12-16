@@ -2,46 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PetManager : MonoBehaviour
+public class PetController : MonoBehaviour
 {
-   // public PetController pet;
-    public NeedsController needsController;
-    public float petMoveTimer, originalpetMoveTimer;
-    public Transform[] waypoints;
-
-    public static PetManager instance;
+    //public Animator petAnimator;
+    private Vector3 destination;
+    public float speed;
 
     private void Awake()
     {
-        originalpetMoveTimer = petMoveTimer;
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else Debug.LogWarning("More than one PetManager in the Scene");
+
     }
 
     private void Update()
     {
-        if (petMoveTimer > 0)
+        if (Vector3.Distance(transform.position,destination) > 0.5f)
         {
-            petMoveTimer -= Time.deltaTime;
-        }
-        else
-        {
-            MovePetToRandomWaypoint();
-            petMoveTimer = originalpetMoveTimer;
+            transform.position = Vector3.MoveTowards(transform.position,destination, speed*Time.deltaTime);
         }
     }
 
-    private void MovePetToRandomWaypoint()
+    public void Move(Vector3 destination)
     {
-        int randomWaypoint = Random.Range(0, waypoints.Length);
-        //pet.Move(waypoints[randomWaypoint].position);
+        this.destination = destination;
     }
 
-    public void Die()
-    {
+    //public void Happy()
+    //{
+        //petAnimator.SetTrigger("Happy");
+    //}
 
-    }
+    //public void Hungry()
+    //{
+        //petAnimator.SetTrigger("Hungry");
+    //}
+
+    //public void Sad()
+    //{
+        //petAnimator.SetTrigger("Sad");
+    //}
+
+    //public void Tired()
+    //{
+        //petAnimator.SetTrigger("Tired");
+    //}
+
+    //public void Eat()
+    //{
+        //petAnimator.SetTrigger("Eat");
+    //}
 }
