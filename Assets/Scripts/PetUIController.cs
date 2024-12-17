@@ -18,7 +18,7 @@ public class PetUIController : MonoBehaviour
 
     public void UpdateImages(int happiness, int energy)
     {
-        happinessImage.fillAmount = (float) happiness / 100;
-        energyImage.fillAmount = (float) energy / 100;
+        happinessImage.fillAmount = (float) happiness * 100;
+        energyImage.fillAmount = (float) energy * 100;
     }
 }
