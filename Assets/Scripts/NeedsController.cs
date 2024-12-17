@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class NeedsController : MonoBehaviour
 {
+    [Range(100,0)]
     public int happiness, energy;
     public int happinessTickRate, energyTickRate;
     public DateTime lastTimeHappy,
            lastTimeGainedEnergy;
+
 
     public object PetManager { get; private set; }
 
@@ -24,7 +26,7 @@ public class NeedsController : MonoBehaviour
         this.energy = energy;
         this.happinessTickRate = happinessTickRate;
         this.energyTickRate = energyTickRate;
-        //PetUIController.instance.UpdateImages( happiness, energy);
+        PetUIController.instance.UpdateImages( happiness, energy);
     }
 
     public void Initialize( int happiness, int energy,
@@ -34,28 +36,28 @@ public class NeedsController : MonoBehaviour
        this.lastTimeHappy = lastTimeHappy;
         this.lastTimeGainedEnergy = lastTimeGainedEnergy;
 
-       // this.happiness = happiness
-            // - happinessTickRate
-                //* TickAmountSinceLastTimeToCurrentTime(lastTimeHappy, TimingManager.instance.hourLength);
+        this.happiness = happiness
+             - happinessTickRate
+                * TickAmountSinceLastTimeToCurrentTime(lastTimeHappy, TimingManager.instance.hourLength);
 
-        //this.energy = energy
-            //- energyTickRate
-            //* TickAmountSinceLastTimeToCurrentTime(lastTimeGainedEnergy, TimingManager.instance.hourLength);
+        this.energy = energy
+            - energyTickRate
+            * TickAmountSinceLastTimeToCurrentTime(lastTimeGainedEnergy, TimingManager.instance.hourLength);
 
         this.happinessTickRate = happinessTickRate;
         this.energyTickRate = energyTickRate;
         if (this.happiness < 0) this.happiness = 0;
         if (this.energy < 0) this.energy = 0;
-        //PetUIController.instance.UpdateImages(this.food, this.happiness, this.energy);
+        PetUIController.instance.UpdateImages( this.happiness, this.energy);
     }
 
     private void Update()
     {
-        //if (TimingManager.instance.gameHourTimer < 0)
+        if (TimingManager.instance.gameHourTimer < 0)
         {
             ChangeHappiness(-happinessTickRate);
             ChangeEnergy(-energyTickRate);
-            //PetUIController.instance.UpdateImages(food, happiness, energy);
+            PetUIController.instance.UpdateImages(happiness, energy);
         }
     }
 
