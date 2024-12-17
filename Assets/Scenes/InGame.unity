@@ -1171,9 +1171,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239332176}
+      - m_Target: {fileID: 11500000, guid: d86800ff574a2a2969944454a27a7189, type: 3}
         m_TargetAssemblyTypeName: toggle, Assembly-CSharp
-        m_MethodName: whenButtonClicked
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

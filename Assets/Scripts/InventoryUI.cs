@@ -12,7 +12,10 @@ public class toggle : MonoBehaviour
 
    public void whenButtonClicked()
 {
-gameObject.SetActive(!gameObject.activeInHierarchy);
+//if(gameobject.activeInHierarchy == true)
+   //gameobject.SetActive(false);
+ //  else
+   //gameobject.SetActive(true);
 }
 
 }
