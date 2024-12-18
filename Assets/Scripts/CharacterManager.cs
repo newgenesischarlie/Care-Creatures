@@ -11,8 +11,12 @@ public class CharacterManager : MonoBehaviour
     private int selectedSkin = 0;
     public GameObject playerskin;
 
+    
+
     public void NextOption()
     {
+
+        Debug.Log("next");
         selectedSkin = selectedSkin + 1;
         if (selectedSkin == skins.Count)
         {
@@ -21,8 +25,10 @@ public class CharacterManager : MonoBehaviour
         sr.sprite = skins[selectedSkin];
     }
 
-    public void BackOption()
-    {
+    public void BackOption() {
+
+        Debug.Log("back");
+    
         selectedSkin = selectedSkin - 1;
         if (selectedSkin < 0)
         {
@@ -32,6 +38,8 @@ public class CharacterManager : MonoBehaviour
     }
     public void PlayGame()
     {
+
+        Debug.Log("play game");
         //PrefabUtility.SaveAsPrefabAsset(playerskin, "Asset/selectedSkin.prefab ");
         SceneManager.LoadScene("MainGame");
     }
