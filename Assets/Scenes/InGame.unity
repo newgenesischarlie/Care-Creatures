@@ -1268,9 +1268,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1423899071}
-        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
-        m_MethodName: WhenButtonClicked
+      - m_Target: {fileID: 1239332176}
+        m_TargetAssemblyTypeName: OnClickHideUn, Assembly-CSharp
+        m_MethodName: whenButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1327,10 +1327,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1239332169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86800ff574a2a2969944454a27a7189, type: 3}
+  m_Script: {fileID: 11500000, guid: cfeb85ac87f444255b962d350106c640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToToggle: {fileID: 0}
+  square: {fileID: 1518638048}
 --- !u!1 &1423899064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1345,6 @@ GameObject:
   - component: {fileID: 1423899068}
   - component: {fileID: 1423899069}
   - component: {fileID: 1423899070}
-  - component: {fileID: 1423899071}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1444,19 +1443,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   happinessImage: {fileID: 2052008708}
   energyImage: {fileID: 223992660}
---- !u!114 &1423899071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423899064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86800ff574a2a2969944454a27a7189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjectToToggle: {fileID: 1239332169}
 --- !u!1 &1475733557
 GameObject:
   m_ObjectHideFlags: 0
