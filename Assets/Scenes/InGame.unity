@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 178562848}
   - component: {fileID: 178562847}
   - component: {fileID: 178562852}
+  - component: {fileID: 178562853}
   m_Layer: 5
   m_Name: Inventory Button
   m_TagString: Untagged
@@ -551,9 +552,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: d86800ff574a2a2969944454a27a7189, type: 3}
-        m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 178562853}
+        m_TargetAssemblyTypeName: OnClickHideUn, Assembly-CSharp
+        m_MethodName: whenButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -653,6 +654,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &178562853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178562845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfeb85ac87f444255b962d350106c640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  square: {fileID: 376404896}
 --- !u!1 &223992658
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 164.0191, y: 2.9421082}
+  m_AnchoredPosition: {x: 164.02, y: -62}
   m_SizeDelta: {x: 426.42, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &376404898
@@ -1508,7 +1522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -269.19092, y: 2.9421082}
+  m_AnchoredPosition: {x: -259, y: -62}
   m_SizeDelta: {x: 440, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1518638050
