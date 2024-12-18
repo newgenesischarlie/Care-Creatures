@@ -18,7 +18,7 @@ public class PetUIController : MonoBehaviour
 
     public void UpdateImages(int happiness, int energy)
     {
-        happinessImage.fillAmount = (float) happiness * 100;
-        energyImage.fillAmount = (float) energy * 100;
+        happinessImage.fillAmount = Mathf.Clamp01((float)happiness / 100f);  // Update happiness bar
+        energyImage.fillAmount = Mathf.Clamp01((float)energy / 100f);
     }
 }
