@@ -1,21 +1,20 @@
 using System.Collections;
-
 using System.Collections.Generic;
-
 using UnityEngine;
 
-
-
-public class toggle : MonoBehaviour
-
+public class InventoryUI : MonoBehaviour
 {
+    public GameObject gameObjectToToggle;
 
-   public void whenButtonClicked()
-{
-//if(gameobject.activeInHierarchy == true)
-   //gameobject.SetActive(false);
- //  else
-   //gameobject.SetActive(true);
-}
-
+    public void WhenButtonClicked()
+    {
+        if (gameObjectToToggle.activeInHierarchy)
+        {
+            gameObjectToToggle.SetActive(false);
+        }
+        else
+        {
+            gameObjectToToggle.SetActive(true);
+        }
+    }
 }
