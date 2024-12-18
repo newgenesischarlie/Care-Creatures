@@ -427,7 +427,11 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   Loop: 0
+=======
+  Loop: 1
+>>>>>>> Stashed changes
 =======
   Loop: 1
 >>>>>>> Stashed changes
