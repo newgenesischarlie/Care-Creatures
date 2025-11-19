@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 public class NeedsController : MonoBehaviour
@@ -9,12 +9,16 @@ public class NeedsController : MonoBehaviour
     public DateTime lastTimeHappy,
            lastTimeGainedEnergy;
 
+    [Header("Decay Settings")]
+    public float decayInterval = 10f;
+    private float decayTimer;
 
     public object PetManager { get; private set; }
 
     private void Awake()
     {
          Initialize( 100, 100, 2, 1);
+         decayTimer = decayInterval;
     }
 
     public void Initialize(int happiness, int energy,
@@ -53,7 +57,18 @@ public class NeedsController : MonoBehaviour
 
     private void Update()
     {
-        if (TimingManager.instance.gameHourTimer < 0)
+        decayTimer -= Time.deltaTime;
+        
+        if (decayTimer <= 0f)
+        {
+            ChangeHappiness(-happinessTickRate);
+            ChangeEnergy(-energyTickRate);
+            PetUIController.instance.UpdateImages(happiness, energy);
+            
+            decayTimer = decayInterval;
+        }
+        
+        if (TimingManager.instance != null && TimingManager.instance.gameHourTimer < 0)
         {
             ChangeHappiness(-happinessTickRate);
             ChangeEnergy(-energyTickRate);
@@ -63,30 +78,54 @@ public class NeedsController : MonoBehaviour
 
     public void ChangeHappiness(int amount)
     {
+        int previousHappiness = happiness;
         happiness += amount;
+        
         if (amount > 0)
         {
             lastTimeHappy = DateTime.Now;
+            Debug.Log($"Happiness increased by {amount}! Current happiness: {happiness}/100 (was {previousHappiness}/100)");
         }
+        else if (amount < 0)
+        {
+            Debug.Log($"Happiness decreased by {Mathf.Abs(amount)}. Current happiness: {happiness}/100 (was {previousHappiness}/100)");
+        }
+        
         if (happiness < 0)
         {
-            //PetManager.instance.Die();
+            happiness = 0;
+            Debug.LogWarning("Happiness reached 0!");
         }
-        else if (happiness > 100) happiness = 100;
+        else if (happiness > 100)
+        {
+            happiness = 100;
+        }
     }
 
     public void ChangeEnergy(int amount)
     {
+        int previousEnergy = energy;
         energy += amount;
+        
         if (amount > 0)
         {
             lastTimeGainedEnergy = DateTime.Now;
+            Debug.Log($"Energy increased by {amount}! Current energy: {energy}/100 (was {previousEnergy}/100)");
         }
+        else if (amount < 0)
+        {
+            Debug.Log($"Energy decreased by {Mathf.Abs(amount)}. Current energy: {energy}/100 (was {previousEnergy}/100)");
+        }
+        
         if (energy < 0)
         {
-            //PetManager.instance.Die();
+            energy = 0;
+            Debug.LogWarning("Energy reached 0!");
         }
-        else if (energy > 100) energy = 100;
+        else if (energy > 100)
+        {
+            energy = 100;
+        }
     }
 
     public int TickAmountSinceLastTimeToCurrentTime(DateTime lastTime, float tickRateInSeconds)

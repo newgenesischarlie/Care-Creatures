@@ -5,16 +5,23 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     public GameObject gameObjectToToggle;
+    public GameObject[] additionalObjectsToToggle;
 
     public void WhenButtonClicked()
     {
-        if (gameObjectToToggle.activeInHierarchy)
+        bool isActive = gameObjectToToggle.activeInHierarchy;
+        
+        gameObjectToToggle.SetActive(!isActive);
+        
+        if (additionalObjectsToToggle != null)
         {
-            gameObjectToToggle.SetActive(false);
-        }
-        else
-        {
-            gameObjectToToggle.SetActive(true);
+            foreach (GameObject obj in additionalObjectsToToggle)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(!isActive);
+                }
+            }
         }
     }
 }
